@@ -27,6 +27,4 @@
         
     </section>
 
-    
-
 @endsection
