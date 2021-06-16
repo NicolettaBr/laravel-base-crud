@@ -42,8 +42,8 @@ class ComicController extends Controller
     {
         //validazione
         $request->validate([
-            'title' => 'required|min:3|max:20',
-            'author' => 'required|min:3|max:20',
+            'title' => 'required|min:3|max:100',
+            'author' => 'required|min:3|max:100',
             'image' => 'required|max:255'
         ]);
 
@@ -111,8 +111,8 @@ class ComicController extends Controller
     {
         //validazione
         $request->validate([
-            'title' => 'required|min:3|max:20',
-            'author' => 'required|min:3|max:20',
+            'title' => 'required|min:3|max:100',
+            'author' => 'required|min:3|max:100',
             'image' => 'required|max:255'
         ]);
 
@@ -139,7 +139,7 @@ class ComicController extends Controller
     {
         //Trovo dato da eliminare attraverso l' id
         $comic_deleted = Comic::find($id);
-        
+
         $comic_deleted->delete();
 
         return redirect()->route('comics.index');
