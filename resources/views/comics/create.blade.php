@@ -18,10 +18,8 @@
             @endif
 
             <form action="{{route('comics.store')}}" method="post">
-            @csrf
-            @method('POST')
-
-            <form>
+                @csrf
+                @method('POST')
 
                 <div class="form-group">
                     <label for="title">Title</label>
@@ -45,8 +43,6 @@
                 
                 <input type="submit" class="btn btn-primary" value="Salva il nuovo prodotto">
 
-            </form>
-            
             
             </form>
         </div>

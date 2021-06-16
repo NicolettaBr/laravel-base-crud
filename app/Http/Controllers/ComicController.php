@@ -40,6 +40,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        //validazione
         $request->validate([
             'title' => 'required|min:3|max:20',
             'author' => 'required|min:3|max:20',
@@ -90,7 +91,13 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+        
+        $data = [
+            'comic'=> $comic
+        ];
+
+        return view('comics.edit', $data);
     }
 
     /**
@@ -102,7 +109,24 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validazione
+        $request->validate([
+            'title' => 'required|min:3|max:20',
+            'author' => 'required|min:3|max:20',
+            'image' => 'required|max:255'
+        ]);
+
+        $form_data = $request->all();
+        //dd($form_data);
+
+        //Trovo l' istanza per id da modificare 
+        $comic_edited = Comic::find($id);
+        //Controller manda il dato modificato al Model per salvarlo nel DB
+        $comic_edited->update($form_data);
+
+        return redirect()->route('comics.show', [
+            'comic' => $comic_edited->id
+        ]);
     }
 
     /**

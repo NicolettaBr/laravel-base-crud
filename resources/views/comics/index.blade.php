@@ -14,9 +14,15 @@
                         <img class="card-img-top" src="{{ $comic->image }}" alt="{{ $comic->title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $comic->title }}</h5>
+
                             <a href="{{ route('comics.show', [
                                 'comic' => $comic->id
                             ]) }}" class="btn btn-primary">Maggiori dettagli</a>
+
+                            <a href="{{ route('comics.edit', [
+                                'comic' => $comic->id
+                            ]) }}" class="btn btn-success">Modifica Prodotto</a>
+
                         </div>
                     </div>
                 </div>
