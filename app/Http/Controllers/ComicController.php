@@ -50,11 +50,14 @@ class ComicController extends Controller
 
         $comic = new Comic();
 
-        $comic->title = $form_data['title'];
-        $comic->author = $form_data['author'];
-        $comic->description = $form_data['description'];
-        $comic->image = $form_data['image'];
+        //$comic->title = $form_data['title'];
+        //$comic->author = $form_data['author'];
+        //$comic->description = $form_data['description'];
+        //$comic->image = $form_data['image'];
+
+        $comic->fill($form_data);
         $comic->save();
+        
 
         return redirect()->route('comics.show', [
             'comic' => $comic->id
